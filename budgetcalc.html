@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Budget Calculator</h1>
+        <label for="income">Enter Your Monthly Income:</label>
+        <input type="number" id="income" placeholder="Enter your income" step="any" style="margin: 0 auto;">
+        <br>
+        <button onclick="calculateBudget()">Calculate</button>
+
+        <h2>Recommended Budget Allocations:</h2>
+        <p>Needs (42%): <span id="needs"></span></p>
+        <p>Wants (33%): <span id="wants"></span></p>
+        <p>Car (7%): <span id="car"></span></p>
+        <p>Investments (12%): <span id="investments"></span></p>
+        <p>Emergency Fund Savings (6%): <span id="emergencyFund"></span></p>
+    </div>
+
+    <script>
+        function calculateBudget() {
+            const income = parseFloat(document.getElementById("income").value);
+            if (isNaN(income)) {
+                alert("Please enter a valid income.");
+                return;
+            }
+
+            const needs = (income * 0.42).toFixed(2);
+            const wants = (income * 0.33).toFixed(2);
+            const car = (income * 0.07).toFixed(2);
+            const investments = (income * 0.12).toFixed(2);
+            const emergencyFund = (income * 0.06).toFixed(2);
+
+            document.getElementById("needs").textContent = "$" + needs;
+            document.getElementById("wants").textContent = "$" + wants;
+            document.getElementById("car").textContent = "$" + car;
+            document.getElementById("investments").textContent = "$" + investments;
+            document.getElementById("emergencyFund").textContent = "$" + emergencyFund;
+        }
+    </script>
+</body>
+</html>
+
